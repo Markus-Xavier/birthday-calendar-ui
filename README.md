@@ -33,7 +33,8 @@ Run `npm run cypress` to start up the Cypress testing server.
 Get all existing birthdays on page load and display them on the DOM, with each birthday appearing in the correct month.
 
 Notes:  
-- For now, use the months data from the `month_data.js` file. Do not fetch that data.
+- You DO have to fetch the birthdays!
+- For now, use the months data from the `month_data.js` file. Do not fetch the months data.
 - Do not worry about including the delete button for each birthday at this point.
 
 ### Iteration 2
