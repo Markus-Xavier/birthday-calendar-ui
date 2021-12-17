@@ -3,6 +3,7 @@ import { fetchData } from '../../apiCalls/apiCalls';
 import './App.css';
 import { months } from '../../months_data';
 import BDayContainer from '../BDayContainer/BDayContainer';
+import BirthdayForm from '../BirthdayForm/BirthdayForm';
 
 
 export default class App extends Component {
@@ -29,14 +30,22 @@ export default class App extends Component {
       this.setState({months: sortedBirthdays});
   }
 
-
+  addBirthday = (birthdayData) => {
+    const bDayMonthIndex = this.state.months.find(month => month.id === parseInt(birthdayData.month)).id - 1;
+    this.setState(prevState => {
+      prevState.months[bDayMonthIndex].birthdays.push(birthdayData);
+      return {
+        months: prevState.months
+      }
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <h1>Birthdays</h1>
         <div className='bday-form'>
-  
+          <BirthdayForm addBirthday={this.addBirthday}/>
         </div>
         <div className='bday-container'>
           <BDayContainer months={this.state.months}/>
